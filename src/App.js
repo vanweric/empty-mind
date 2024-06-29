@@ -27,7 +27,7 @@ const App = () => {
       inputRef.current.focus(); // Retain focus on the text input
       Animated.timing(newMessage.fadeAnim, {
         toValue: 0,
-        duration: 30000,
+        duration: 15000,
         useNativeDriver: true,
       }).start(() => {
         //setMessages(messages => messages.filter(message => message.id !== newMessage.id));
