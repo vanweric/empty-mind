@@ -27,9 +27,11 @@ const App = () => {
       inputRef.current.focus(); // Retain focus on the text input
       Animated.timing(newMessage.fadeAnim, {
         toValue: 0,
-        duration: 3000,
+        duration: 5000,
         useNativeDriver: true,
-      }).start(() => {});
+      }).start(() => {
+        //setMessages(messages => messages.filter(message => message.id !== newMessage.id));
+      });
     }
   };
 
@@ -40,7 +42,10 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.messagesContainer}>
+      <ScrollView style={styles.messagesContainer}
+           showsVerticalScrollIndicator={false}
+      >
+        
         {messages.map((msg) => (
           <Animated.View
             key={msg.id}
@@ -50,29 +55,37 @@ const App = () => {
           </Animated.View>
         ))}
       </ScrollView>
-      <TextInput
-        ref={inputRef}
-        style={styles.input}
-        value={text}
-        onChangeText={setText}
-        onSubmitEditing={handleTextSubmit}
-        placeholder="Enter text..."
-        returnKeyType="done"
-        blurOnSubmit={false} // Prevent the input from losing focus on submit
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          ref={inputRef}
+          style={styles.input}
+          value={text}
+          onChangeText={setText}
+          onSubmitEditing={handleTextSubmit}
+          placeholder="Enter text..."
+          returnKeyType="done"
+          blurOnSubmit={false} // Prevent the input from losing focus on submit
+        />
+        <Button style={styles.copyButton} onPress={() => handleCopyToClipboard()}>
+          {/* You can use any clipboard icon here */}
+          <Text>📋</Text>
+        </Button>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: '100vh',
+    display: 'flex',
     flexDirection: "column",
     backgroundColor: "#ddd",
-    padding: 10,
+    padding: 24,
   },
   messagesContainer: {
     flex: 4, // 80% of vertical space
+    flexDirection: 'column-reverse',
     marginBottom: 16,
     backgroundColor: "#eee",
   },
@@ -83,15 +96,23 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     animation: "fadeOut 3s forwards",
   },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: '10vh',
+  },
   input: {
-    flex: 1, // 20% of vertical space
     borderColor: "gray",
     borderWidth: 1,
-    marginBottom: 8,
-
+    paddingVertical: 8,
+    flex: 1,
     backgroundColor: "#999",
     paddingHorizontal: 8,
   },
+  copyButton: {
+    width: 10,
+    padding: 8,
+  }
 });
 
 export default App;
