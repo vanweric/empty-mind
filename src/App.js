@@ -27,7 +27,7 @@ const App = () => {
       inputRef.current.focus(); // Retain focus on the text input
       Animated.timing(newMessage.fadeAnim, {
         toValue: 0,
-        duration: 16384,
+        duration: 15000,
         useNativeDriver: true,
       }).start(() => {
         //setMessages(messages => messages.filter(message => message.id !== newMessage.id));
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     marginVertical: 16,
     borderRadius: 4,
-    animation: "fadeOut 3s forwards",
+    animation: "fadeOut 15s forwards",
   },
   inputContainer: {
     flexDirection: 'row',
