@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/empty-mind/static/js/main.5d515dd2.js",
+    "main.js": "/empty-mind/static/js/main.087aef81.js",
     "index.html": "/empty-mind/index.html",
-    "main.5d515dd2.js.map": "/empty-mind/static/js/main.5d515dd2.js.map"
+    "main.087aef81.js.map": "/empty-mind/static/js/main.087aef81.js.map"
   },
   "entrypoints": [
-    "static/js/main.5d515dd2.js"
+    "static/js/main.087aef81.js"
   ]
 }
